@@ -1,0 +1,48 @@
+{
+  "hardware": {
+    "cpu_model": "Intel(R) Xeon(R) Processor @ 2.30GHz",
+    "isa": [
+      "sse4_2",
+      "avx",
+      "avx2",
+      "fma",
+      "avx512f",
+      "avx512_bf16",
+      "amx_tile"
+    ],
+    "logical_cpus": 2,
+    "cgroup_cpu_max": "n/a",
+    "mem_total_mb": 8027.58,
+    "mem_available_mb": 7477.3,
+    "swap_total_mb": 0,
+    "cgroup_mem_max": "n/a",
+    "dev_shm_mb": 8027.53,
+    "kernel": "Linux 6.18.44-fc-v153",
+    "hypervisor": true
+  },
+  "os": {
+    "max_open_files": 20000,
+    "max_user_processes": 32026,
+    "loopback_mtu": 65536,
+    "udp_rmem_max": 4194304,
+    "pid_max": 32768
+  },
+  "benchmarks": {
+    "sleep_1ms_overshoot_p50_us": 76.744,
+    "sleep_1ms_overshoot_p99_us": 149.727,
+    "udp_loopback_rtt_p50_us": 30.551,
+    "udp_loopback_rtt_p99_us": 63.068,
+    "udp_loopback_samples": 2000,
+    "fork_exec_wait_p50_ms": 0.924302,
+    "lcg_mops_per_s_1thread": 888.124,
+    "cas_ns_per_op": 8.2948
+  },
+  "recommendation": {
+    "max_node_processes": 48,
+    "min_task_duration_s": 0.05,
+    "execution_mode": "emulated-timed",
+    "rationale": "Node processes, sockets, threads, protocols and timing are real; task kernels are emulated as timed occupancy against a hidden ground-truth hardware model because the host has far fewer physical cores than the emulated cluster, so running real kernels would measure host contention instead of scheduling."
+  },
+  "cluster_nodes": 12,
+  "cluster_emulated_cores": 176
+}

@@ -1,0 +1,3 @@
+[  6297.039] a2       node a2 up (policy=compute-only probe=adaptive coord=0)
+[  6398.658] a2       node a2 shutting down
+[  6398.658] a2       resources free: cores=16 mem=64 gpus=0; reservations=0 outgoing_xfers=0

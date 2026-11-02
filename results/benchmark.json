@@ -1,0 +1,1315 @@
+{
+  "system_profile": {
+    "hardware": {
+      "cpu_model": "Intel(R) Xeon(R) Processor @ 2.30GHz",
+      "isa": [
+        "sse4_2",
+        "avx",
+        "avx2",
+        "fma",
+        "avx512f",
+        "avx512_bf16",
+        "amx_tile"
+      ],
+      "logical_cpus": 2,
+      "cgroup_cpu_max": "n/a",
+      "mem_total_mb": 8027.58,
+      "mem_available_mb": 7477.3,
+      "swap_total_mb": 0,
+      "cgroup_mem_max": "n/a",
+      "dev_shm_mb": 8027.53,
+      "kernel": "Linux 6.18.44-fc-v153",
+      "hypervisor": true
+    },
+    "os": {
+      "max_open_files": 20000,
+      "max_user_processes": 32026,
+      "loopback_mtu": 65536,
+      "udp_rmem_max": 4194304,
+      "pid_max": 32768
+    },
+    "benchmarks": {
+      "sleep_1ms_overshoot_p50_us": 76.744,
+      "sleep_1ms_overshoot_p99_us": 149.727,
+      "udp_loopback_rtt_p50_us": 30.551,
+      "udp_loopback_rtt_p99_us": 63.068,
+      "udp_loopback_samples": 2000,
+      "fork_exec_wait_p50_ms": 0.924302,
+      "lcg_mops_per_s_1thread": 888.124,
+      "cas_ns_per_op": 8.2948
+    },
+    "recommendation": {
+      "max_node_processes": 48,
+      "min_task_duration_s": 0.05,
+      "execution_mode": "emulated-timed",
+      "rationale": "Node processes, sockets, threads, protocols and timing are real; task kernels are emulated as timed occupancy against a hidden ground-truth hardware model because the host has far fewer physical cores than the emulated cluster, so running real kernels would measure host contention instead of scheduling."
+    },
+    "cluster_nodes": 12,
+    "cluster_emulated_cores": 176
+  },
+  "workload": {
+    "duration_s": 75,
+    "rate_per_s": 1.6
+  },
+  "aggregate": [
+    {
+      "scenario": "baseline",
+      "policy": "nexus",
+      "probe": "adaptive",
+      "runs": 2,
+      "metrics": {
+        "jobs.completed": {
+          "mean": 125.5,
+          "sd": 6.364
+        },
+        "jobs.incomplete": {
+          "mean": 0,
+          "sd": 0
+        },
+        "jobs.makespan_s": {
+          "mean": 91.12,
+          "sd": 0.977
+        },
+        "jobs.jct_mean_s": {
+          "mean": 14.7,
+          "sd": 1.947
+        },
+        "jobs.jct_p50_s": {
+          "mean": 15.337,
+          "sd": 1.162
+        },
+        "jobs.jct_p95_s": {
+          "mean": 33.074,
+          "sd": 10.252
+        },
+        "jobs.resubmitted": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.wait_mean_s": {
+          "mean": 0.409,
+          "sd": 0.088
+        },
+        "tasks.xfer_mean_s": {
+          "mean": 1.335,
+          "sd": 0.129
+        },
+        "tasks.exec_mean_s": {
+          "mean": 7.103,
+          "sd": 0.268
+        },
+        "tasks.turnaround_mean_s": {
+          "mean": 8.846,
+          "sd": 0.485
+        },
+        "tasks.network_gb": {
+          "mean": 38.317,
+          "sd": 2.352
+        },
+        "tasks.local_input_fraction": {
+          "mean": 0.508,
+          "sd": 0.011
+        },
+        "tasks.exec_pred_mape": {
+          "mean": 0.092,
+          "sd": 0.001
+        },
+        "tasks.exec_pred_mape_first_half": {
+          "mean": 0.099,
+          "sd": 0.003
+        },
+        "tasks.exec_pred_mape_second_half": {
+          "mean": 0.085,
+          "sd": 0.001
+        },
+        "tasks.total_pred_mape": {
+          "mean": 0.152,
+          "sd": 0.044
+        },
+        "tasks.xfer_pred_mae_s": {
+          "mean": 0.879,
+          "sd": 0.521
+        },
+        "tasks.migrations": {
+          "mean": 18,
+          "sd": 2.828
+        },
+        "tasks.reschedules": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.failed_attempts": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.duplicate_completions": {
+          "mean": 0,
+          "sd": 0
+        },
+        "utilisation.core_util_mean": {
+          "mean": 0.513,
+          "sd": 0.037
+        },
+        "utilisation.gpu_util_mean": {
+          "mean": 0.546,
+          "sd": 0.125
+        },
+        "utilisation.data_MBps_mean": {
+          "mean": 425.335,
+          "sd": 38.24
+        },
+        "overhead.telemetry_kBps_per_node": {
+          "mean": 63.976,
+          "sd": 0.118
+        },
+        "overhead.telemetry_to_data_ratio": {
+          "mean": 0.002,
+          "sd": 0
+        },
+        "overhead.control_msgs_total": {
+          "mean": 37547.5,
+          "sd": 335.876
+        },
+        "overhead.lat_est_rel_err_p50": {
+          "mean": 0.301,
+          "sd": 0.019
+        },
+        "overhead.bw_est_rel_err_p50": {
+          "mean": 0.028,
+          "sd": 0.001
+        },
+        "overhead.probe_interval_ms_mean": {
+          "mean": 237.635,
+          "sd": 21.379
+        },
+        "overhead.probes_deferred_busy_nic": {
+          "mean": 0.5,
+          "sd": 0.707
+        },
+        "scheduling.decision_ms_mean": {
+          "mean": 0.062,
+          "sd": 0.003
+        },
+        "scheduling.delegations": {
+          "mean": 172.5,
+          "sd": 3.536
+        },
+        "scheduling.reservation_nacks": {
+          "mean": 20,
+          "sd": 5.657
+        },
+        "scheduling.local_placements": {
+          "mean": 41.5,
+          "sd": 4.95
+        },
+        "host.node_cpu_share_of_one_core": {
+          "mean": 0.214,
+          "sd": 0.004
+        },
+        "host.node_maxrss_mb_mean": {
+          "mean": 4.801,
+          "sd": 0.005
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "policy": "fifo",
+      "probe": "adaptive",
+      "runs": 2,
+      "metrics": {
+        "jobs.completed": {
+          "mean": 125.5,
+          "sd": 6.364
+        },
+        "jobs.incomplete": {
+          "mean": 0,
+          "sd": 0
+        },
+        "jobs.makespan_s": {
+          "mean": 114.483,
+          "sd": 25.564
+        },
+        "jobs.jct_mean_s": {
+          "mean": 24.477,
+          "sd": 10.159
+        },
+        "jobs.jct_p50_s": {
+          "mean": 21.866,
+          "sd": 7.474
+        },
+        "jobs.jct_p95_s": {
+          "mean": 50.936,
+          "sd": 22.06
+        },
+        "jobs.resubmitted": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.wait_mean_s": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.xfer_mean_s": {
+          "mean": 2.912,
+          "sd": 0.762
+        },
+        "tasks.exec_mean_s": {
+          "mean": 7.312,
+          "sd": 0.327
+        },
+        "tasks.turnaround_mean_s": {
+          "mean": 10.224,
+          "sd": 1.089
+        },
+        "tasks.network_gb": {
+          "mean": 65.073,
+          "sd": 5.106
+        },
+        "tasks.local_input_fraction": {
+          "mean": 0.166,
+          "sd": 0.004
+        },
+        "tasks.exec_pred_mape": {
+          "mean": 0.106,
+          "sd": 0.014
+        },
+        "tasks.exec_pred_mape_first_half": {
+          "mean": 0.131,
+          "sd": 0.03
+        },
+        "tasks.exec_pred_mape_second_half": {
+          "mean": 0.082,
+          "sd": 0.001
+        },
+        "tasks.total_pred_mape": {
+          "mean": 0.342,
+          "sd": 0.037
+        },
+        "tasks.xfer_pred_mae_s": {
+          "mean": 2.912,
+          "sd": 0.762
+        },
+        "tasks.migrations": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.reschedules": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.failed_attempts": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.duplicate_completions": {
+          "mean": 0,
+          "sd": 0
+        },
+        "utilisation.core_util_mean": {
+          "mean": 0.492,
+          "sd": 0.046
+        },
+        "utilisation.gpu_util_mean": {
+          "mean": 0.493,
+          "sd": 0.001
+        },
+        "utilisation.data_MBps_mean": {
+          "mean": 569.694,
+          "sd": 81.017
+        },
+        "overhead.telemetry_kBps_per_node": {
+          "mean": 0.416,
+          "sd": 0.001
+        },
+        "overhead.telemetry_to_data_ratio": {
+          "mean": 0,
+          "sd": 0
+        },
+        "overhead.control_msgs_total": {
+          "mean": 7900,
+          "sd": 1425.53
+        },
+        "overhead.lat_est_rel_err_p50": {
+          "mean": 0,
+          "sd": 0
+        },
+        "overhead.bw_est_rel_err_p50": {
+          "mean": 0.625,
+          "sd": 0.121
+        },
+        "overhead.probe_interval_ms_mean": {
+          "mean": 400,
+          "sd": 0
+        },
+        "overhead.probes_deferred_busy_nic": {
+          "mean": 0,
+          "sd": 0
+        },
+        "scheduling.decision_ms_mean": {
+          "mean": 0.058,
+          "sd": 0
+        },
+        "scheduling.delegations": {
+          "mean": 178.5,
+          "sd": 13.435
+        },
+        "scheduling.reservation_nacks": {
+          "mean": 0,
+          "sd": 0
+        },
+        "scheduling.local_placements": {
+          "mean": 35.5,
+          "sd": 4.95
+        },
+        "host.node_cpu_share_of_one_core": {
+          "mean": 0.176,
+          "sd": 0.018
+        },
+        "host.node_maxrss_mb_mean": {
+          "mean": 4.635,
+          "sd": 0.021
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "policy": "compute-only",
+      "probe": "adaptive",
+      "runs": 2,
+      "metrics": {
+        "jobs.completed": {
+          "mean": 125.5,
+          "sd": 6.364
+        },
+        "jobs.incomplete": {
+          "mean": 0,
+          "sd": 0
+        },
+        "jobs.makespan_s": {
+          "mean": 95.02,
+          "sd": 1.534
+        },
+        "jobs.jct_mean_s": {
+          "mean": 17.203,
+          "sd": 0.517
+        },
+        "jobs.jct_p50_s": {
+          "mean": 15.919,
+          "sd": 1.648
+        },
+        "jobs.jct_p95_s": {
+          "mean": 36.219,
+          "sd": 0.467
+        },
+        "jobs.resubmitted": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.wait_mean_s": {
+          "mean": 0.572,
+          "sd": 0.192
+        },
+        "tasks.xfer_mean_s": {
+          "mean": 2.371,
+          "sd": 0.063
+        },
+        "tasks.exec_mean_s": {
+          "mean": 7.171,
+          "sd": 0.348
+        },
+        "tasks.turnaround_mean_s": {
+          "mean": 10.114,
+          "sd": 0.092
+        },
+        "tasks.network_gb": {
+          "mean": 66.182,
+          "sd": 5.577
+        },
+        "tasks.local_input_fraction": {
+          "mean": 0.152,
+          "sd": 0.001
+        },
+        "tasks.exec_pred_mape": {
+          "mean": 0.114,
+          "sd": 0.007
+        },
+        "tasks.exec_pred_mape_first_half": {
+          "mean": 0.116,
+          "sd": 0.007
+        },
+        "tasks.exec_pred_mape_second_half": {
+          "mean": 0.112,
+          "sd": 0.006
+        },
+        "tasks.total_pred_mape": {
+          "mean": 0.322,
+          "sd": 0.028
+        },
+        "tasks.xfer_pred_mae_s": {
+          "mean": 2.371,
+          "sd": 0.063
+        },
+        "tasks.migrations": {
+          "mean": 23,
+          "sd": 5.657
+        },
+        "tasks.reschedules": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.failed_attempts": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.duplicate_completions": {
+          "mean": 0,
+          "sd": 0
+        },
+        "utilisation.core_util_mean": {
+          "mean": 0.547,
+          "sd": 0.018
+        },
+        "utilisation.gpu_util_mean": {
+          "mean": 0.586,
+          "sd": 0.052
+        },
+        "utilisation.data_MBps_mean": {
+          "mean": 685.119,
+          "sd": 42.753
+        },
+        "overhead.telemetry_kBps_per_node": {
+          "mean": 64.171,
+          "sd": 0.161
+        },
+        "overhead.telemetry_to_data_ratio": {
+          "mean": 0.001,
+          "sd": 0
+        },
+        "overhead.control_msgs_total": {
+          "mean": 38924.5,
+          "sd": 894.49
+        },
+        "overhead.lat_est_rel_err_p50": {
+          "mean": 0.266,
+          "sd": 0.004
+        },
+        "overhead.bw_est_rel_err_p50": {
+          "mean": 0.057,
+          "sd": 0.021
+        },
+        "overhead.probe_interval_ms_mean": {
+          "mean": 242.847,
+          "sd": 14.997
+        },
+        "overhead.probes_deferred_busy_nic": {
+          "mean": 0,
+          "sd": 0
+        },
+        "scheduling.decision_ms_mean": {
+          "mean": 0.062,
+          "sd": 0.003
+        },
+        "scheduling.delegations": {
+          "mean": 182.5,
+          "sd": 3.536
+        },
+        "scheduling.reservation_nacks": {
+          "mean": 44,
+          "sd": 11.314
+        },
+        "scheduling.local_placements": {
+          "mean": 31.5,
+          "sd": 4.95
+        },
+        "host.node_cpu_share_of_one_core": {
+          "mean": 0.256,
+          "sd": 0.011
+        },
+        "host.node_maxrss_mb_mean": {
+          "mean": 4.8,
+          "sd": 0.035
+        }
+      }
+    },
+    {
+      "scenario": "baseline",
+      "policy": "centralized",
+      "probe": "adaptive",
+      "runs": 1,
+      "metrics": {
+        "jobs.completed": {
+          "mean": 121,
+          "sd": 0
+        },
+        "jobs.incomplete": {
+          "mean": 0,
+          "sd": 0
+        },
+        "jobs.makespan_s": {
+          "mean": 94.648,
+          "sd": 0
+        },
+        "jobs.jct_mean_s": {
+          "mean": 12.896,
+          "sd": 0
+        },
+        "jobs.jct_p50_s": {
+          "mean": 14.071,
+          "sd": 0
+        },
+        "jobs.jct_p95_s": {
+          "mean": 23.966,
+          "sd": 0
+        },
+        "jobs.resubmitted": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.wait_mean_s": {
+          "mean": 0.481,
+          "sd": 0
+        },
+        "tasks.xfer_mean_s": {
+          "mean": 1.276,
+          "sd": 0
+        },
+        "tasks.exec_mean_s": {
+          "mean": 6.748,
+          "sd": 0
+        },
+        "tasks.turnaround_mean_s": {
+          "mean": 8.505,
+          "sd": 0
+        },
+        "tasks.network_gb": {
+          "mean": 36.591,
+          "sd": 0
+        },
+        "tasks.local_input_fraction": {
+          "mean": 0.502,
+          "sd": 0
+        },
+        "tasks.exec_pred_mape": {
+          "mean": 0.099,
+          "sd": 0
+        },
+        "tasks.exec_pred_mape_first_half": {
+          "mean": 0.1,
+          "sd": 0
+        },
+        "tasks.exec_pred_mape_second_half": {
+          "mean": 0.097,
+          "sd": 0
+        },
+        "tasks.total_pred_mape": {
+          "mean": 0.139,
+          "sd": 0
+        },
+        "tasks.xfer_pred_mae_s": {
+          "mean": 0.485,
+          "sd": 0
+        },
+        "tasks.migrations": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.reschedules": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.failed_attempts": {
+          "mean": 0,
+          "sd": 0
+        },
+        "tasks.duplicate_completions": {
+          "mean": 0,
+          "sd": 0
+        },
+        "utilisation.core_util_mean": {
+          "mean": 0.456,
+          "sd": 0
+        },
+        "utilisation.gpu_util_mean": {
+          "mean": 0.415,
+          "sd": 0
+        },
+        "utilisation.data_MBps_mean": {
+          "mean": 380.997,
+          "sd": 0
+        },
+        "overhead.telemetry_kBps_per_node": {
+          "mean": 64.985,
+          "sd": 0
+        },
+        "overhead.telemetry_to_data_ratio": {
+          "mean": 0.002,
+          "sd": 0
+        },
+        "overhead.control_msgs_total": {
+          "mean": 42635,
+          "sd": 0
+        },
+        "overhead.lat_est_rel_err_p50": {
+          "mean": 0.293,
+          "sd": 0
+        },
+        "overhead.bw_est_rel_err_p50": {
+          "mean": 0.023,
+          "sd": 0
+        },
+        "overhead.probe_interval_ms_mean": {
+          "mean": 277.585,
+          "sd": 0
+        },
+        "overhead.probes_deferred_busy_nic": {
+          "mean": 0,
+          "sd": 0
+        },
+        "scheduling.decision_ms_mean": {
+          "mean": 0.069,
+          "sd": 0
+        },
+        "scheduling.delegations": {
+          "mean": 191,
+          "sd": 0
+        },
+        "scheduling.reservation_nacks": {
+          "mean": 0,
+          "sd": 0
+        },
+        "scheduling.local_placements": {
+          "mean": 17,
+          "sd": 0
+        },
+        "host.node_cpu_share_of_one_core": {
+          "mean": 0.193,
+          "sd": 0
+        },
+        "host.node_maxrss_mb_mean": {
+          "mean": 4.827,
+          "sd": 0
+        }
+      }
+    }
+  ],
+  "runs": [
+    {
+      "name": "baseline_nexus_s1",
+      "scenario": "baseline",
+      "policy": "nexus",
+      "probe": "adaptive",
+      "seed": 1,
+      "faults": false,
+      "jobs": {
+        "submitted": 121,
+        "completed": 121,
+        "incomplete": 0,
+        "makespan_s": 90.429,
+        "jct_mean_s": 13.323,
+        "jct_p50_s": 14.516,
+        "jct_p95_s": 25.825,
+        "jct_p99_s": 28.505,
+        "resubmitted": 0,
+        "jct_mean_by_kind_s": {
+          "cpu-batch": 14.682,
+          "gpu-train": 17.803,
+          "interactive": 1.512,
+          "mem-heavy": 12.745,
+          "pipeline": 19.603
+        }
+      },
+      "tasks": {
+        "completed": 208,
+        "wait_mean_s": 0.347,
+        "xfer_mean_s": 1.244,
+        "exec_mean_s": 6.913,
+        "turnaround_mean_s": 8.503,
+        "turnaround_p95_s": 20.447,
+        "network_gb": 36.654,
+        "input_gb": 73.415,
+        "local_input_fraction": 0.501,
+        "remote_input_tasks": 124,
+        "migrated_tasks": 15,
+        "exec_pred_mape": 0.092,
+        "exec_pred_mape_first_half": 0.101,
+        "exec_pred_mape_second_half": 0.084,
+        "total_pred_mape": 0.121,
+        "xfer_pred_mae_s": 0.51,
+        "failed_attempts": 0,
+        "duplicate_completions": 0,
+        "reschedules": 0,
+        "migrations": 16
+      },
+      "utilisation": {
+        "core_util_mean": 0.486,
+        "gpu_util_mean": 0.457,
+        "data_MBps_mean": 398.295
+      },
+      "overhead": {
+        "telemetry_bytes": 73557724,
+        "telemetry_msgs": 34612,
+        "telemetry_kBps_per_node": 63.892,
+        "control_bytes_total": 73875301,
+        "control_msgs_total": 37310,
+        "telemetry_to_data_ratio": 0.002,
+        "latency_probes": 17181,
+        "bandwidth_probes": 180,
+        "probes_deferred_busy_nic": 0,
+        "probes_skipped_budget": 90,
+        "probe_interval_ms_mean": 252.753,
+        "lat_est_rel_err_p50": 0.314,
+        "bw_est_rel_err_p50": 0.027
+      },
+      "scheduling": {
+        "decisions": 280,
+        "local_placements": 38,
+        "delegations": 170,
+        "reservation_nacks": 16,
+        "reservations_granted": 194,
+        "reservations_denied": 9,
+        "migrations": 16,
+        "decision_ms_mean": 0.064,
+        "nack_reasons": {
+          "quota": 7
+        }
+      },
+      "host": {
+        "node_processes": 12,
+        "node_cpu_seconds_total": 20.236,
+        "node_cpu_share_of_one_core": 0.211,
+        "node_maxrss_mb_mean": 4.804
+      },
+      "fault_log": [],
+      "timeline": null
+    },
+    {
+      "name": "baseline_fifo_s1",
+      "scenario": "baseline",
+      "policy": "fifo",
+      "probe": "adaptive",
+      "seed": 1,
+      "faults": false,
+      "jobs": {
+        "submitted": 121,
+        "completed": 121,
+        "incomplete": 0,
+        "makespan_s": 96.407,
+        "jct_mean_s": 17.293,
+        "jct_p50_s": 16.581,
+        "jct_p95_s": 35.337,
+        "jct_p99_s": 40.886,
+        "resubmitted": 0,
+        "jct_mean_by_kind_s": {
+          "cpu-batch": 16.856,
+          "gpu-train": 21.469,
+          "interactive": 2.779,
+          "mem-heavy": 14.362,
+          "pipeline": 29.322
+        }
+      },
+      "tasks": {
+        "completed": 208,
+        "wait_mean_s": 0,
+        "xfer_mean_s": 2.373,
+        "exec_mean_s": 7.081,
+        "turnaround_mean_s": 9.454,
+        "turnaround_p95_s": 22.134,
+        "network_gb": 61.463,
+        "input_gb": 73.415,
+        "local_input_fraction": 0.163,
+        "remote_input_tasks": 164,
+        "migrated_tasks": 0,
+        "exec_pred_mape": 0.096,
+        "exec_pred_mape_first_half": 0.109,
+        "exec_pred_mape_second_half": 0.083,
+        "total_pred_mape": 0.315,
+        "xfer_pred_mae_s": 2.373,
+        "failed_attempts": 0,
+        "duplicate_completions": 0,
+        "reschedules": 0,
+        "migrations": 0
+      },
+      "utilisation": {
+        "core_util_mean": 0.524,
+        "gpu_util_mean": 0.492,
+        "data_MBps_mean": 626.981
+      },
+      "overhead": {
+        "telemetry_bytes": 507399,
+        "telemetry_msgs": 4417,
+        "telemetry_kBps_per_node": 0.415,
+        "control_bytes_total": 733117,
+        "control_msgs_total": 6892,
+        "telemetry_to_data_ratio": 0,
+        "latency_probes": 0,
+        "bandwidth_probes": 0,
+        "probes_deferred_busy_nic": 0,
+        "probes_skipped_budget": 0,
+        "probe_interval_ms_mean": 400,
+        "lat_est_rel_err_p50": 0,
+        "bw_est_rel_err_p50": 0.539
+      },
+      "scheduling": {
+        "decisions": 647,
+        "local_placements": 39,
+        "delegations": 169,
+        "reservation_nacks": 0,
+        "reservations_granted": 0,
+        "reservations_denied": 0,
+        "migrations": 0,
+        "decision_ms_mean": 0.058,
+        "nack_reasons": null
+      },
+      "host": {
+        "node_processes": 12,
+        "node_cpu_seconds_total": 19.226,
+        "node_cpu_share_of_one_core": 0.189,
+        "node_maxrss_mb_mean": 4.649
+      },
+      "fault_log": [],
+      "timeline": null
+    },
+    {
+      "name": "baseline_compute-only_s1",
+      "scenario": "baseline",
+      "policy": "compute-only",
+      "probe": "adaptive",
+      "seed": 1,
+      "faults": false,
+      "jobs": {
+        "submitted": 121,
+        "completed": 121,
+        "incomplete": 0,
+        "makespan_s": 93.935,
+        "jct_mean_s": 16.837,
+        "jct_p50_s": 14.753,
+        "jct_p95_s": 35.889,
+        "jct_p99_s": 41.894,
+        "resubmitted": 0,
+        "jct_mean_by_kind_s": {
+          "cpu-batch": 15.794,
+          "gpu-train": 21.398,
+          "interactive": 2.109,
+          "mem-heavy": 19.032,
+          "pipeline": 26.988
+        }
+      },
+      "tasks": {
+        "completed": 208,
+        "wait_mean_s": 0.708,
+        "xfer_mean_s": 2.415,
+        "exec_mean_s": 6.925,
+        "turnaround_mean_s": 10.049,
+        "turnaround_p95_s": 23.285,
+        "network_gb": 62.238,
+        "input_gb": 73.415,
+        "local_input_fraction": 0.152,
+        "remote_input_tasks": 184,
+        "migrated_tasks": 24,
+        "exec_pred_mape": 0.109,
+        "exec_pred_mape_first_half": 0.111,
+        "exec_pred_mape_second_half": 0.107,
+        "total_pred_mape": 0.342,
+        "xfer_pred_mae_s": 2.415,
+        "failed_attempts": 0,
+        "duplicate_completions": 0,
+        "reschedules": 0,
+        "migrations": 27
+      },
+      "utilisation": {
+        "core_util_mean": 0.534,
+        "gpu_util_mean": 0.549,
+        "data_MBps_mean": 654.888
+      },
+      "overhead": {
+        "telemetry_bytes": 76440850,
+        "telemetry_msgs": 35027,
+        "telemetry_kBps_per_node": 64.057,
+        "control_bytes_total": 76821547,
+        "control_msgs_total": 38292,
+        "telemetry_to_data_ratio": 0.001,
+        "latency_probes": 17380,
+        "bandwidth_probes": 217,
+        "probes_deferred_busy_nic": 0,
+        "probes_skipped_budget": 119,
+        "probe_interval_ms_mean": 253.451,
+        "lat_est_rel_err_p50": 0.269,
+        "bw_est_rel_err_p50": 0.042
+      },
+      "scheduling": {
+        "decisions": 486,
+        "local_placements": 28,
+        "delegations": 180,
+        "reservation_nacks": 52,
+        "reservations_granted": 212,
+        "reservations_denied": 38,
+        "migrations": 27,
+        "decision_ms_mean": 0.06,
+        "nack_reasons": {
+          "quota": 31
+        }
+      },
+      "host": {
+        "node_processes": 12,
+        "node_cpu_seconds_total": 24.617,
+        "node_cpu_share_of_one_core": 0.248,
+        "node_maxrss_mb_mean": 4.775
+      },
+      "fault_log": [],
+      "timeline": null
+    },
+    {
+      "name": "baseline_centralized_s1",
+      "scenario": "baseline",
+      "policy": "centralized",
+      "probe": "adaptive",
+      "seed": 1,
+      "faults": false,
+      "jobs": {
+        "submitted": 121,
+        "completed": 121,
+        "incomplete": 0,
+        "makespan_s": 94.648,
+        "jct_mean_s": 12.896,
+        "jct_p50_s": 14.071,
+        "jct_p95_s": 23.966,
+        "jct_p99_s": 27.399,
+        "resubmitted": 0,
+        "jct_mean_by_kind_s": {
+          "cpu-batch": 14.276,
+          "gpu-train": 16.688,
+          "interactive": 1.626,
+          "mem-heavy": 12.27,
+          "pipeline": 19.164
+        }
+      },
+      "tasks": {
+        "completed": 208,
+        "wait_mean_s": 0.481,
+        "xfer_mean_s": 1.276,
+        "exec_mean_s": 6.748,
+        "turnaround_mean_s": 8.505,
+        "turnaround_p95_s": 18.65,
+        "network_gb": 36.591,
+        "input_gb": 73.415,
+        "local_input_fraction": 0.502,
+        "remote_input_tasks": 130,
+        "migrated_tasks": 0,
+        "exec_pred_mape": 0.099,
+        "exec_pred_mape_first_half": 0.1,
+        "exec_pred_mape_second_half": 0.097,
+        "total_pred_mape": 0.139,
+        "xfer_pred_mae_s": 0.485,
+        "failed_attempts": 0,
+        "duplicate_completions": 0,
+        "reschedules": 0,
+        "migrations": 0
+      },
+      "utilisation": {
+        "core_util_mean": 0.456,
+        "gpu_util_mean": 0.415,
+        "data_MBps_mean": 380.997
+      },
+      "overhead": {
+        "telemetry_bytes": 78099541,
+        "telemetry_msgs": 40337,
+        "telemetry_kBps_per_node": 64.985,
+        "control_bytes_total": 78312164,
+        "control_msgs_total": 42635,
+        "telemetry_to_data_ratio": 0.002,
+        "latency_probes": 17823,
+        "bandwidth_probes": 198,
+        "probes_deferred_busy_nic": 0,
+        "probes_skipped_budget": 96,
+        "probe_interval_ms_mean": 277.585,
+        "lat_est_rel_err_p50": 0.293,
+        "bw_est_rel_err_p50": 0.023
+      },
+      "scheduling": {
+        "decisions": 208,
+        "local_placements": 17,
+        "delegations": 191,
+        "reservation_nacks": 0,
+        "reservations_granted": 0,
+        "reservations_denied": 0,
+        "migrations": 0,
+        "decision_ms_mean": 0.069,
+        "nack_reasons": null
+      },
+      "host": {
+        "node_processes": 12,
+        "node_cpu_seconds_total": 19.351,
+        "node_cpu_share_of_one_core": 0.193,
+        "node_maxrss_mb_mean": 4.827
+      },
+      "fault_log": [],
+      "timeline": null
+    },
+    {
+      "name": "baseline_nexus_s2",
+      "scenario": "baseline",
+      "policy": "nexus",
+      "probe": "adaptive",
+      "seed": 2,
+      "faults": false,
+      "jobs": {
+        "submitted": 130,
+        "completed": 130,
+        "incomplete": 0,
+        "makespan_s": 91.811,
+        "jct_mean_s": 16.076,
+        "jct_p50_s": 16.159,
+        "jct_p95_s": 40.323,
+        "jct_p99_s": 52.579,
+        "resubmitted": 0,
+        "jct_mean_by_kind_s": {
+          "cpu-batch": 18.808,
+          "gpu-train": 22.748,
+          "interactive": 1.694,
+          "mem-heavy": 15.435,
+          "pipeline": 18.144
+        }
+      },
+      "tasks": {
+        "completed": 220,
+        "wait_mean_s": 0.471,
+        "xfer_mean_s": 1.426,
+        "exec_mean_s": 7.292,
+        "turnaround_mean_s": 9.189,
+        "turnaround_p95_s": 22.45,
+        "network_gb": 39.98,
+        "input_gb": 82.586,
+        "local_input_fraction": 0.516,
+        "remote_input_tasks": 130,
+        "migrated_tasks": 19,
+        "exec_pred_mape": 0.091,
+        "exec_pred_mape_first_half": 0.097,
+        "exec_pred_mape_second_half": 0.085,
+        "total_pred_mape": 0.183,
+        "xfer_pred_mae_s": 1.247,
+        "failed_attempts": 0,
+        "duplicate_completions": 0,
+        "reschedules": 0,
+        "migrations": 20
+      },
+      "utilisation": {
+        "core_util_mean": 0.539,
+        "gpu_util_mean": 0.634,
+        "data_MBps_mean": 452.374
+      },
+      "overhead": {
+        "telemetry_bytes": 74823166,
+        "telemetry_msgs": 34902,
+        "telemetry_kBps_per_node": 64.059,
+        "control_bytes_total": 75160640,
+        "control_msgs_total": 37785,
+        "telemetry_to_data_ratio": 0.002,
+        "latency_probes": 17302,
+        "bandwidth_probes": 192,
+        "probes_deferred_busy_nic": 1,
+        "probes_skipped_budget": 101,
+        "probe_interval_ms_mean": 222.518,
+        "lat_est_rel_err_p50": 0.287,
+        "bw_est_rel_err_p50": 0.028
+      },
+      "scheduling": {
+        "decisions": 767,
+        "local_placements": 45,
+        "delegations": 175,
+        "reservation_nacks": 24,
+        "reservations_granted": 197,
+        "reservations_denied": 18,
+        "migrations": 20,
+        "decision_ms_mean": 0.06,
+        "nack_reasons": {
+          "quota": 17
+        }
+      },
+      "host": {
+        "node_processes": 12,
+        "node_cpu_seconds_total": 21.053,
+        "node_cpu_share_of_one_core": 0.216,
+        "node_maxrss_mb_mean": 4.797
+      },
+      "fault_log": [],
+      "timeline": null
+    },
+    {
+      "name": "baseline_fifo_s2",
+      "scenario": "baseline",
+      "policy": "fifo",
+      "probe": "adaptive",
+      "seed": 2,
+      "faults": false,
+      "jobs": {
+        "submitted": 130,
+        "completed": 130,
+        "incomplete": 0,
+        "makespan_s": 132.56,
+        "jct_mean_s": 31.66,
+        "jct_p50_s": 27.151,
+        "jct_p95_s": 66.535,
+        "jct_p99_s": 78.996,
+        "resubmitted": 0,
+        "jct_mean_by_kind_s": {
+          "cpu-batch": 26.737,
+          "gpu-train": 30.617,
+          "interactive": 16.134,
+          "mem-heavy": 28.345,
+          "pipeline": 52.759
+        }
+      },
+      "tasks": {
+        "completed": 220,
+        "wait_mean_s": 0,
+        "xfer_mean_s": 3.45,
+        "exec_mean_s": 7.543,
+        "turnaround_mean_s": 10.994,
+        "turnaround_p95_s": 22.193,
+        "network_gb": 68.684,
+        "input_gb": 82.586,
+        "local_input_fraction": 0.168,
+        "remote_input_tasks": 177,
+        "migrated_tasks": 0,
+        "exec_pred_mape": 0.116,
+        "exec_pred_mape_first_half": 0.152,
+        "exec_pred_mape_second_half": 0.081,
+        "total_pred_mape": 0.368,
+        "xfer_pred_mae_s": 3.45,
+        "failed_attempts": 0,
+        "duplicate_completions": 0,
+        "reschedules": 0,
+        "migrations": 0
+      },
+      "utilisation": {
+        "core_util_mean": 0.459,
+        "gpu_util_mean": 0.493,
+        "data_MBps_mean": 512.406
+      },
+      "overhead": {
+        "telemetry_bytes": 690550,
+        "telemetry_msgs": 6012,
+        "telemetry_kBps_per_node": 0.417,
+        "control_bytes_total": 950335,
+        "control_msgs_total": 8908,
+        "telemetry_to_data_ratio": 0,
+        "latency_probes": 0,
+        "bandwidth_probes": 0,
+        "probes_deferred_busy_nic": 0,
+        "probes_skipped_budget": 0,
+        "probe_interval_ms_mean": 400,
+        "lat_est_rel_err_p50": 0,
+        "bw_est_rel_err_p50": 0.71
+      },
+      "scheduling": {
+        "decisions": 910,
+        "local_placements": 32,
+        "delegations": 188,
+        "reservation_nacks": 0,
+        "reservations_granted": 0,
+        "reservations_denied": 0,
+        "migrations": 0,
+        "decision_ms_mean": 0.058,
+        "nack_reasons": null
+      },
+      "host": {
+        "node_processes": 12,
+        "node_cpu_seconds_total": 22.5,
+        "node_cpu_share_of_one_core": 0.163,
+        "node_maxrss_mb_mean": 4.62
+      },
+      "fault_log": [],
+      "timeline": null
+    },
+    {
+      "name": "baseline_compute-only_s2",
+      "scenario": "baseline",
+      "policy": "compute-only",
+      "probe": "adaptive",
+      "seed": 2,
+      "faults": false,
+      "jobs": {
+        "submitted": 130,
+        "completed": 130,
+        "incomplete": 0,
+        "makespan_s": 96.104,
+        "jct_mean_s": 17.568,
+        "jct_p50_s": 17.084,
+        "jct_p95_s": 36.549,
+        "jct_p99_s": 52.663,
+        "resubmitted": 0,
+        "jct_mean_by_kind_s": {
+          "cpu-batch": 19.107,
+          "gpu-train": 22.931,
+          "interactive": 1.845,
+          "mem-heavy": 15.426,
+          "pipeline": 23.915
+        }
+      },
+      "tasks": {
+        "completed": 220,
+        "wait_mean_s": 0.436,
+        "xfer_mean_s": 2.326,
+        "exec_mean_s": 7.417,
+        "turnaround_mean_s": 10.179,
+        "turnaround_p95_s": 21.525,
+        "network_gb": 70.125,
+        "input_gb": 82.586,
+        "local_input_fraction": 0.151,
+        "remote_input_tasks": 189,
+        "migrated_tasks": 16,
+        "exec_pred_mape": 0.119,
+        "exec_pred_mape_first_half": 0.121,
+        "exec_pred_mape_second_half": 0.116,
+        "total_pred_mape": 0.302,
+        "xfer_pred_mae_s": 2.326,
+        "failed_attempts": 0,
+        "duplicate_completions": 0,
+        "reschedules": 0,
+        "migrations": 19
+      },
+      "utilisation": {
+        "core_util_mean": 0.559,
+        "gpu_util_mean": 0.622,
+        "data_MBps_mean": 715.35
+      },
+      "overhead": {
+        "telemetry_bytes": 78392336,
+        "telemetry_msgs": 36242,
+        "telemetry_kBps_per_node": 64.284,
+        "control_bytes_total": 78771275,
+        "control_msgs_total": 39557,
+        "telemetry_to_data_ratio": 0.001,
+        "latency_probes": 18000,
+        "bandwidth_probes": 211,
+        "probes_deferred_busy_nic": 0,
+        "probes_skipped_budget": 132,
+        "probe_interval_ms_mean": 232.242,
+        "lat_est_rel_err_p50": 0.263,
+        "bw_est_rel_err_p50": 0.072
+      },
+      "scheduling": {
+        "decisions": 808,
+        "local_placements": 35,
+        "delegations": 185,
+        "reservation_nacks": 36,
+        "reservations_granted": 207,
+        "reservations_denied": 25,
+        "migrations": 19,
+        "decision_ms_mean": 0.064,
+        "nack_reasons": {
+          "quota": 25
+        }
+      },
+      "host": {
+        "node_processes": 12,
+        "node_cpu_seconds_total": 26.726,
+        "node_cpu_share_of_one_core": 0.263,
+        "node_maxrss_mb_mean": 4.824
+      },
+      "fault_log": [],
+      "timeline": null
+    }
+  ]
+}

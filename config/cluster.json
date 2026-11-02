@@ -1,0 +1,70 @@
+{
+  "name": "nexus-12",
+  "base_port": 47000,
+  "client_port": 46990,
+  "http_port": 8080,
+  "fabric": { "switch_buffer_kb": 512, "base_loss": 0.001 },
+  "racks": [
+    { "name": "A-compute", "uplink_gbps": 5, "intra_latency_us": 30 },
+    { "name": "B-gpu",     "uplink_gbps": 4, "intra_latency_us": 30 },
+    { "name": "C-data",    "uplink_gbps": 10, "intra_latency_us": 50 }
+  ],
+  "rack_latency_us": [
+    [0,    150, 1200],
+    [150,  0,   900],
+    [1200, 900, 0]
+  ],
+  "datasets": [
+    { "id": 0, "name": "climate-reanalysis", "size_mb": 600 },
+    { "id": 1, "name": "genome-cohort",      "size_mb": 900 },
+    { "id": 2, "name": "image-corpus",       "size_mb": 1200 }
+  ],
+  "tenants": [
+    { "name": "physics", "partitions": ["general", "storage", "gpu"], "node_quota_frac": 0.75 },
+    { "name": "ml",      "partitions": ["gpu", "general"],            "node_quota_frac": 1.0 },
+    { "name": "bio",     "partitions": ["general", "bigmem", "storage"], "node_quota_frac": 0.75 }
+  ],
+  "nodes": [
+    { "name": "a0", "rack": "A-compute", "cores": 16, "mem_gb": 64,  "gpus": 0, "cpu_speed": 1.0, "nic_gbps": 2.5, "partition": "general" },
+    { "name": "a1", "rack": "A-compute", "cores": 16, "mem_gb": 64,  "gpus": 0, "cpu_speed": 1.0, "nic_gbps": 2.5, "partition": "general", "datasets": [0] },
+    { "name": "a2", "rack": "A-compute", "cores": 16, "mem_gb": 64,  "gpus": 0, "cpu_speed": 1.0, "nic_gbps": 2.5, "partition": "general",
+      "ground_truth": { "cpu_factor": 0.6 } },
+    { "name": "a3", "rack": "A-compute", "cores": 16, "mem_gb": 64,  "gpus": 0, "cpu_speed": 1.0, "nic_gbps": 2.5, "partition": "general" },
+    { "name": "g0", "rack": "B-gpu", "cores": 8, "mem_gb": 96, "gpus": 2, "cpu_speed": 1.1, "gpu_speed": 1.0, "nic_gbps": 2.5, "partition": "gpu", "datasets": [2] },
+    { "name": "g1", "rack": "B-gpu", "cores": 8, "mem_gb": 96, "gpus": 2, "cpu_speed": 1.1, "gpu_speed": 1.0, "nic_gbps": 2.5, "partition": "gpu",
+      "ground_truth": { "gpu_factor": 0.55 } },
+    { "name": "g2", "rack": "B-gpu", "cores": 8, "mem_gb": 96, "gpus": 2, "cpu_speed": 1.1, "gpu_speed": 1.0, "nic_gbps": 2.5, "partition": "gpu", "datasets": [2] },
+    { "name": "g3", "rack": "B-gpu", "cores": 8, "mem_gb": 96, "gpus": 2, "cpu_speed": 1.1, "gpu_speed": 1.5, "nic_gbps": 2.5, "partition": "gpu",
+      "ground_truth": { "gpu_factor": 1.0 } },
+    { "name": "s0", "rack": "C-data", "cores": 8, "mem_gb": 32, "gpus": 0, "cpu_speed": 0.8, "nic_gbps": 5, "partition": "storage", "storage_tb": 200, "datasets": [0, 2] },
+    { "name": "s1", "rack": "C-data", "cores": 8, "mem_gb": 32, "gpus": 0, "cpu_speed": 0.8, "nic_gbps": 5, "partition": "storage", "storage_tb": 200, "datasets": [1] },
+    { "name": "m0", "rack": "C-data", "cores": 32, "mem_gb": 512, "gpus": 0, "cpu_speed": 0.9, "nic_gbps": 2.5, "partition": "bigmem", "datasets": [1] },
+    { "name": "m1", "rack": "C-data", "cores": 32, "mem_gb": 512, "gpus": 0, "cpu_speed": 0.9, "nic_gbps": 2.5, "partition": "bigmem" }
+  ],
+  "cross_traffic": [
+    { "link": "rack:B-gpu:down", "period_s": 40, "duty": 0.4, "load": 0.6, "phase_s": 0 },
+    { "link": "node:s0:up",      "period_s": 30, "duty": 0.35, "load": 0.7, "phase_s": 10 },
+    { "link": "rack:C-data:up",  "period_s": 50, "duty": 0.3, "load": 0.5, "phase_s": 25 }
+  ],
+  "interference": [
+    { "node": "a1", "start_s": 30, "end_s": 55, "factor": 1.8 },
+    { "node": "m1", "start_s": 20, "end_s": 60, "factor": 1.5 }
+  ],
+  "workload": {
+    "duration_s": 75,
+    "rate_per_s": 1.6,
+    "mix": { "cpu-batch": 0.3, "gpu-train": 0.2, "pipeline": 0.2, "interactive": 0.2, "mem-heavy": 0.1 }
+  },
+  "nexus": {
+    "probe_base_ms": 400,
+    "probe_fanout": 3,
+    "gossip_records": 4,
+    "telemetry_budget_kBps": 64,
+    "stale_s": 4.0,
+    "suspect_s": 6.0,
+    "delegate_margin": 0.10,
+    "max_queue": 6,
+    "migrate_gain": 0.35,
+    "central_poll_ms": 500
+  }
+}

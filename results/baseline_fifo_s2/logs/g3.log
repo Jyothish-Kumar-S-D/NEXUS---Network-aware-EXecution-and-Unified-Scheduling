@@ -1,0 +1,3 @@
+[  6158.944] g3       node g3 up (policy=fifo probe=adaptive coord=0)
+[  6297.011] g3       node g3 shutting down
+[  6297.011] g3       resources free: cores=8 mem=96 gpus=2; reservations=0 outgoing_xfers=0
